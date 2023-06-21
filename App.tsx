@@ -2,13 +2,16 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, Text, View } from 'react-native';
 import Value from './src/components/Value'
 import RingProgress from './src/components/RingProgress';
+import AppleHealthKit from 'react-native-health';
 
 
 export default function App() {
+  AppleHealthKit.isAvailable(() => {});
+
   return (
     <View style={styles.container}>
       
-      <RingProgress progress={0.5} />
+      <RingProgress radius={150} strokeWidth={50} progress={0.5} />
 
       <View style={styles.values}>
         <Value label="Steps" value="1219" />
